@@ -6,8 +6,8 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "ideas",
-      "methods": ["get"]
+      "route": "idea/{id}",
+      "methods": ["delete"]
     },
     {
       "type": "http",

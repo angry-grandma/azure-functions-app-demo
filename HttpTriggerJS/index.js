@@ -10,13 +10,12 @@ module.exports = function (context, req) {
                 context.log.error("Cannot connect to database");
                 context.done();
             }
-            let idea = ({ id, name, description, color } = req.body);
+            let idea = ({ name, description, color } = req.body);
 
             var db = database.db(process.env.DBName);
 
             db.collection('Ideas').insertOne(
                 {
-                    id: idea.id,
                     name: idea.name,
                     description: idea.description,
                     color: idea.color

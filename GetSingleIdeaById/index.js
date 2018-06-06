@@ -16,14 +16,13 @@ module.exports = function (context, req) {
             const db = database.db(process.env.DBName);
             db
                 .collection('Ideas')
-                .find()
-                .toArray((err, result) => {
+                .findOne({ id: parseInt(req.params.id) }, (err, result) => {
                     if (err) {
                         context.log.error("There was an issue with retrieving the objects from DB");
                         database.close();
                         context.done();
                     }
-                    result.forEach(idea => delete idea._id);
+                    delete result._id;
                     context.res = {
                         body: result
                     };
